@@ -10,7 +10,7 @@ export const initLogin = () => {
 export const loginFail = () => {
   return {
     type: actionTypes.LOGIN_FAIL,
-    error: "username or password is invalid"
+    error: "username or password is invalid (needs to be longer than 5 characters)"
   }
 }
 
