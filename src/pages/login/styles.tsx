@@ -9,16 +9,15 @@ export default styled(Button)`
   }
 `;
 
-
 export const ContainerLogin = styled(Container)`
   .formLogin {
     display: grid;
   }
   .loginButtons {
-    background: #8F57AB;
+    background: #8f57ab;
   }
   .MuiFormControl-root {
     margin-bottom: 2%;
     margin-top: 2%;
-}
+  }
 `;

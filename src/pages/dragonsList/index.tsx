@@ -8,11 +8,10 @@ import { DragonList } from "./styles";
 import Container from "../../components/Container/styles";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
-const DragonsList = (props: any) => {
+const DragonsList = (props: { history: { pathname: string; state: any; }[]; loading: any; dragonsList: { map: (arg0: (dragon: any) => JSX.Element) => JSX.Element; }; error: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
   const [isAddingNew, setIsAddingNew] = useState(false);
 
-
-  const onClickDragonHandler = (event: any) => {
+  const onClickDragonHandler = (event: { id: string; }) => {
     props.history.push({ pathname: `/dragon/${event.id}`, state: event });
   };
 
@@ -22,7 +21,7 @@ const DragonsList = (props: any) => {
 
   let list = <p>Loading</p>;
   if (!props.loading) {
-    list = props.dragonsList.map((dragon: any) => (
+    list = props.dragonsList.map((dragon: { id: string; name: string; }) => (
       <div key={dragon.id} className="dragon">
         <FontAwesomeIcon icon={faDragon} />
         <li onClick={onClickDragonHandler.bind(this, dragon)}>{dragon.name}</li>
@@ -37,12 +36,13 @@ const DragonsList = (props: any) => {
         <FontAwesomeIcon icon={faDragon} size="5x" />
         <ul>{list}</ul>
         <hr />
-        {!isAddingNew &&
-        <FontAwesomeIcon
-          onClick={addNewDragonHandler}
-          icon={faPlus}
-          style={{ marginRight: 2 }}
-        />}
+        {!isAddingNew && (
+          <FontAwesomeIcon
+            onClick={addNewDragonHandler}
+            icon={faPlus}
+            style={{ marginRight: 2 }}
+          />
+        )}
         {isAddingNew && <NewDragon />}
         {props.error && <p>{props.error}</p>}
       </DragonList>
@@ -50,7 +50,7 @@ const DragonsList = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { dragonList: { dragons: any; loading: any; error: any; wasUpdate: any; }; dragon: { wasCreated: any; }; }) => {
   return {
     dragonsList: state.dragonList.dragons,
     loading: state.dragonList.loading,

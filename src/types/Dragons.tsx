@@ -3,6 +3,5 @@ export interface DragonList {
   createdAt: string;
   name: string;
   type: string;
-  histories: string[]; 
+  histories: string[];
 }
-

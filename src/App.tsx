@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "./pages/login/index";
-import DragonList from "./pages/dragons-list/index";
-import Dragon from "./pages/dragon/index";
-import GlobalStyle  from "./components/GlobalStyles/styles";
 
+import Dragon from "./pages/dragon/index";
+import GlobalStyle from "./components/GlobalStyles/styles";
+import DragonsList from "./pages/dragonsList/index";
 
 const App = (props: any) => {
   let routes = (
@@ -19,8 +19,11 @@ const App = (props: any) => {
     routes = (
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/dragon/:id" render={(props: any) => <Dragon {...props} />} />
-        <Route path="/list" exact component={DragonList} />
+        <Route
+          path="/dragon/:id"
+          render={(props: any) => <Dragon {...props} />}
+        />
+        <Route path="/list" exact component={DragonsList} />
         <Redirect to="/" />
       </Switch>
     );
@@ -28,7 +31,7 @@ const App = (props: any) => {
 
   return (
     <div className="App">
-        <GlobalStyle />
+      <GlobalStyle />
       <header className="App-header">{routes}</header>
     </div>
   );
@@ -36,15 +39,8 @@ const App = (props: any) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
   };
 };
 
-
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    null
-  )(App)
-);
+export default withRouter(connect(mapStateToProps, null)(App));

@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import {updateObject} from '../../shared/utility';
+import { updateObject } from '../../shared/utility';
 
 const initialState = {
   dragons: [],
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const getDragonsList = (state: any, action: any) => {
-  return updateObject(state,{
+  return updateObject(state, {
     dragons: action.dragonsList,
     loading: true,
     wasUpdate: false
@@ -17,7 +17,7 @@ const getDragonsList = (state: any, action: any) => {
 };
 
 const getDragonsListSuccess = (state: any, action: any) => {
-  return updateObject(state,{
+  return updateObject(state, {
     dragons: action.dragonsList,
     loading: false,
     wasUpdate: true
@@ -25,7 +25,7 @@ const getDragonsListSuccess = (state: any, action: any) => {
   })
 };
 const getDragonsListFail = (state: any, action: any) => {
-  return updateObject(state,{
+  return updateObject(state, {
     error: action.error,
     loading: false,
     wasUpdate: false

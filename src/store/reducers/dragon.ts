@@ -27,11 +27,11 @@ const deleteDragonFail = (state: any, action: any) => {
 };
 
 const createDragonFail = (state: any, action: any) => {
-    return updateObject(state, { error: action.error, wasCreated: false });
+  return updateObject(state, { error: action.error, wasCreated: false });
 };
 
-const createDragonSuccess = (state: any,action: any) => {
-    return updateObject(state, {wasCreated: action.wasCreated})
+const createDragonSuccess = (state: any, action: any) => {
+  return updateObject(state, { wasCreated: action.wasCreated })
 }
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -40,7 +40,7 @@ const reducer = (state = initialState, action: any) => {
     case actionTypes.SAVE_DRAGON_FAIL:
       return saveDragonFail(state, action);
     case actionTypes.DELETE_DRAGON_INIT:
-      return deleteDragonInit(state,action);
+      return deleteDragonInit(state, action);
     case actionTypes.DELETE_DRAGON_SUCCESS:
       return deleteDragonSuccess(state, action);
     case actionTypes.DELETE_DRAGON_FAIL:

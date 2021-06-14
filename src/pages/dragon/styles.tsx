@@ -18,13 +18,13 @@ export const ListDragon = styled.div`
       padding: 2%;
     }
     @media (max-width: 800px) {
-     align-items: normal;
-     .first-row-info {
-      padding: 5%;
-     }
+      align-items: normal;
+      .first-row-info {
+        padding: 5%;
+      }
     }
   }
-  
+
   .MuiFormControl-root.MuiTextField-root {
     @media (max-width: 800px) {
       margin: 3%;

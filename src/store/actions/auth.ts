@@ -10,13 +10,13 @@ export const initLogin = () => {
 export const loginFail = () => {
   return {
     type: actionTypes.LOGIN_FAIL,
-    error: "Invalid username/password"
+    error: "username or password is invalid"
   }
 }
 
-export const login = (credentials: { username: string | any[]; password: string | any[]; }) => {
-  return (dispatch:any) => {
-    if(credentials.username.length > 4 && credentials.password.length > 4) {
+export const login = (credentials: { username: string; password: string; }) => {
+  return (dispatch: any) => {
+    if (credentials.username.length > 5 && credentials.password.length > 5) {
       dispatch(initLogin());
       dispatch(actions.getDragonsList());
     } else {
